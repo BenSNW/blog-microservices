@@ -22,6 +22,6 @@ out
 build
 
 target
-logs
+# logs
 ML-to-do-notes.md
 data
