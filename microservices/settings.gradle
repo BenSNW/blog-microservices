@@ -1,0 +1,16 @@
+// reference: elasticsearch setting.gradle
+// https://github.com/elastic/elasticsearch/blob/master/settings.gradle
+// http://www.vogella.com/tutorials/Gradle/article.html#building-java-projects
+
+rootProject.name = 'microservices'
+
+List projects = [
+  'support:discovery-server',
+  'support:edge-server',
+  'core:product-service',
+  'core:recommendation-service',
+  'core:review-service',
+  'composite:product-composite-service',
+]
+
+include projects.toArray(new String[0])

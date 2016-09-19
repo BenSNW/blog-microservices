@@ -1,12 +1,14 @@
 buildscript {
     ext {
-        springBootVersion = '1.2.2.RELEASE'
+        springBootVersion = '1.2.3.RELEASE'
+        springCloudVersion = '1.0.0.RELEASE'
     }
     repositories {
+        mavenLocal()
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
     }
 }
 
@@ -18,7 +20,7 @@ apply plugin: 'maven-publish'
 
 jar {
     baseName = 'review-service'
-    version = '0.0.1-SNAPSHOT'
+    version = '1.0'
 }
 
 // $ gradle publishToMavenLocal
@@ -28,7 +30,7 @@ publishing {
             // TODO: Where to place these properties?
             groupId 'se.callista.microservises.core.review'
             artifactId 'review-service'
-            version '0.0.1-SNAPSHOT'
+            version '1.0'
 
             from components.java
         }
@@ -39,6 +41,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         // Can't find spring-cloud-build in maven central...
@@ -48,15 +51,15 @@ repositories {
 
 dependencies {
     // TODO: Added ver no on the three core starter deps to make the maven plugin to work
-    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}") {
+    compile("org.springframework.boot:spring-boot-starter-web:1.2.3.RELEASE") {
         exclude module: 'spring-boot-starter-tomcat'
     }
-    compile("org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-undertow:1.2.3.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-actuator:1.2.3.RELEASE")
     compile("org.springframework.cloud:spring-cloud-starter-eureka:1.0.0.RELEASE")
-    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-test:1.2.3.RELEASE")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.14'
 }
