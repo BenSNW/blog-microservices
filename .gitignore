@@ -6,6 +6,8 @@
 *.war
 *.ear
 
+.DS_Store
+
 # Eclipse files #
 .settings
 .classpath
@@ -22,6 +24,3 @@ out
 build
 
 target
-logs
-ML-to-do-notes.md
-data
